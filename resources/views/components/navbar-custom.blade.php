@@ -4,7 +4,7 @@
             <!-- Topbar Brand Logo -->
             <div class="logo-topbar">
                 <!-- Logo light -->
-                <a href="index.html" class="logo-light">
+                <a href="{{ route('dashboard') }}" class="logo-light">
                     <span class="logo-lg">
                         <img src="{{ asset('images/logo.png') }}" alt="logo">
                     </span>
@@ -14,7 +14,7 @@
                 </a>
 
                 <!-- Logo Dark -->
-                <a href="index.html" class="logo-dark">
+                <a href="{{ route('dashboard') }}" class="logo-dark">
                     <span class="logo-lg">
                         <img src="{{ asset('images/logo-dark.png') }}" alt="dark logo">
                     </span>
@@ -37,83 +37,17 @@
                     <span></span>
                 </div>
             </button>
-
-            <!-- Topbar Search Form -->
-            <div class="app-search dropdown d-none d-lg-block">
-                <form>
-                    <div class="input-group">
-                        <input type="search" class="form-control dropdown-toggle" placeholder="Search..." id="top-search">
-                        <span class="mdi mdi-magnify search-icon"></span>
-                        <button class="input-group-text btn btn-primary" type="submit">Search</button>
-                    </div>
-                </form>
-
-                <div class="dropdown-menu dropdown-menu-animated dropdown-lg" id="search-dropdown">
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h5 class="text-overflow mb-2">Found <span class="text-danger">17</span> results</h5>
-                    </div>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="uil-notes font-16 me-1"></i>
-                        <span>Analytics Report</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="uil-life-ring font-16 me-1"></i>
-                        <span>How can I help you?</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="uil-cog font-16 me-1"></i>
-                        <span>User profile settings</span>
-                    </a>
-
-                    <!-- item-->
-                    <div class="dropdown-header noti-title">
-                        <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
-                    </div>
-
-                    <div class="notification-list">
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="d-flex">
-                                <img class="d-flex me-2 rounded-circle" src="{{ asset('images/users/avatar-2.jpg') }}" alt="Generic placeholder image" height="32">
-                                <div class="w-100">
-                                    <h5 class="m-0 font-14">Erwin Brown</h5>
-                                    <span class="font-12 mb-0">UI Designer</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item">
-                            <div class="d-flex">
-                                <img class="d-flex me-2 rounded-circle" src="{{ asset('images/users/avatar-5.jpg') }}" alt="Generic placeholder image" height="32">
-                                <div class="w-100">
-                                    <h5 class="m-0 font-14">Jacob Deo</h5>
-                                    <span class="font-12 mb-0">Developer</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <ul class="topbar-menu d-flex align-items-center gap-3">
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="dashboard-analytics.html#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('images/flags/us.jpg') }}" alt="user-image" class="me-0 me-sm-1" height="12">
-                    <span class="align-middle d-none d-lg-inline-block">English</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
+                    <img src="{{ asset('images/flags/'. (app()->getLocale() == 'en' ? 'us' : 'fr') .'.webp') }}" alt="user-image" class="me-0 me-sm-1" height="12">
+                    <span class="align-middle d-none d-lg-inline-block">@lang('locale.' . (app()->getLocale() == 'en' ? 'english' : 'french'))</span> <i class="mdi mdi-chevron-down d-none d-sm-inline-block align-middle"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('images/flags/russia.jpg') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
+                    <a href="{{ route('locales.switch', app()->getLocale() == 'en' ? 'fr' : 'en') }}" class="dropdown-item">
+                        <img src="{{ asset('images/flags/'. (app()->getLocale() == 'en' ? 'fr' : 'us') .'.webp') }}" alt="user-image" class="me-1" height="12"> <span class="align-middle">@lang('locale.' . (app()->getLocale() == 'en' ? 'french' : 'english'))</span>
                     </a>
                 </div>
             </li>

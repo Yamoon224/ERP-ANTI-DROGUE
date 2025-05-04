@@ -18,17 +18,19 @@ class EmployeeController extends Controller
     // Création d'un employé
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'email' => 'required|email|unique:employees,email',
+        $data = $request->validate([
+            'firstname' => 'required|string|max:100',
+            'lastname' => 'required|string|max:100',
+            'email' => 'nullable|email|unique:employees,email',
             'phone' => 'nullable|string|max:20',
+            'role' => 'required|string',
+            'grade' => 'nullable|string',
             'employee_type' => ['required', Rule::in(['officer', 'civil_agent'])],
             'status' => ['nullable', Rule::in(['active', 'sick', 'retired', 'on_leave', 'in_training', 'dismissed'])],
             'hire_date' => 'required|date',
         ]);
 
-        $employee = Employee::create($validated);
+        $employee = Employee::create($data);
 
         return back()->with(['message'=>__('locale.save')]);
     }
@@ -46,8 +48,8 @@ class EmployeeController extends Controller
         $employee = Employee::find($id);
 
         $data = $request->validate([
-            'first_name' => 'sometimes|required|string|max:100',
-            'last_name' => 'sometimes|required|string|max:100',
+            'firstname' => 'sometimes|required|string|max:100',
+            'lastname' => 'sometimes|required|string|max:100',
             'email' => ['sometimes', 'required', 'email', Rule::unique('employees')->ignore($employee->id)],
             'phone' => 'nullable|string|max:20',
             'employee_type' => ['sometimes', 'required', Rule::in(['officer', 'civil_agent'])],

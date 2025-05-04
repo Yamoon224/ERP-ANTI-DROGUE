@@ -40,10 +40,6 @@ class Employee extends Model
 {
 	use SoftDeletes;
 
-	protected $casts = [
-		'hire_date' => 'datetime'
-	];
-
 	protected $guarded = [];
 
 	public function appointments()

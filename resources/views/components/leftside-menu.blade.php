@@ -2,20 +2,20 @@
     <!-- Brand Logo Light -->
     <a href="{{ route('dashboard') }}" class="logo logo-light">
         <span class="logo-lg">
-            <img src="{{ asset('images/logo.png') }}" alt="logo">
+            <img src="{{ asset('images/logo.webp') }}" alt="LOGO">
         </span>
         <span class="logo-sm">
-            <img src="{{ asset('images/logo-sm.png') }}" alt="small logo">
+            <img src="{{ asset('images/logo.webp') }}" alt="LOGO">
         </span>
     </a>
 
     <!-- Brand Logo Dark -->
     <a href="{{ route('dashboard') }}" class="logo logo-dark">
         <span class="logo-lg">
-            <img src="{{ asset('images/logo-dark.png') }}" alt="dark logo">
+            <img src="{{ asset('images/logo.webp') }}" alt="LOGO">
         </span>
         <span class="logo-sm">
-            <img src="{{ asset('images/logo-dark-sm.png') }}" alt="small logo">
+            <img src="{{ asset('images/logo.webp') }}" alt="LOGO">
         </span>
     </a>
 
@@ -33,7 +33,7 @@
     <div class="h-100" id="leftside-menu-container" data-simplebar>
         <!-- Leftbar User -->
         <div class="leftbar-user">
-            <a href="pages-profile.html">
+            <a href="{{ route('profile') }}">
                 <img src="{{ asset('images/users/avatar-1.jpg') }}" alt="user-image" height="42" class="rounded-circle shadow-sm">
                 <span class="leftbar-user-name mt-2">{{ auth()->user()->username }}</span>
             </a>
@@ -56,6 +56,41 @@
                 <a href="{{ route('employees.index') }}" class="side-nav-link">
                     <i class="uil-users-alt"></i>
                     <span>@lang('locale.employee', ['suffix'=>'s'])</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('appointments.index') }}" class="side-nav-link">
+                    <i class="uil-calendar-alt"></i>
+                    <span>@lang('locale.appointment', ['suffix'=>'s'])</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('arrests.index') }}" class="side-nav-link">
+                    <i class="uil-close"></i>
+                    <span>@lang('locale.arrest', ['suffix'=>'s'])</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('hearings.index') }}" class="side-nav-link">
+                    <i class="uil-calendar-alt"></i>
+                    <span>@lang('locale.hearing', ['suffix'=>'s'])</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('incomingmails.index') }}" class="side-nav-link">
+                    <i class="uil-envelope"></i>
+                    <span>@lang('locale.incoming_mail', ['suffix'=>'s'])</span>
+                </a>
+            </li>
+
+            <li class="side-nav-item">
+                <a href="{{ route('outgoingmails.index') }}" class="side-nav-link">
+                    <i class="uil-envelope-open"></i>
+                    <span>@lang('locale.outgoing_mail', ['suffix'=>'s'])</span>
                 </a>
             </li>
 

@@ -66,14 +66,14 @@
         <div class="account-pages pt-2 pt-sm-5 pb-4 pb-sm-5 position-relative">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-xxl-4 col-lg-4 col-md-6 col-sm-6 col-xs-8">
+                    <div class="col-xxl-4 col-lg-4 col-md-6 col-sm-8 col-xs-10">
                         <div class="card">
                             <!-- Logo -->
-                            <div class="card-header py-4 text-center bg-primary">
-                                <a><span><img src="{{ asset('images/logo.png') }}" alt="LOGO" height="22"></span></a>
+                            <div class="card-header py-2 text-center bg-primary">
+                                <a><span><img src="{{ asset('images/logo.png') }}" alt="LOGO" height="60" width="60"></span></a>
                             </div>
     
-                            <div class="card-body p-4">
+                            <div class="card-body px-4 py-2">
                                 {{ $slot }}
                             </div>
                         </div>
